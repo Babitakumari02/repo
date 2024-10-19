@@ -8,7 +8,7 @@ steps:
   - --runtime=python312  
   - --trigger-http  
   - --allow-unauthenticated  
-  - --entry-point=hello 
+  - --entry-point=hello_http  # Entry point to the function in main.py
   - --source=. 
   - --region=us-central1 
 

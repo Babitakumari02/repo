@@ -1,0 +1,14 @@
+# Step : Deploy the Cloud Function
+steps:
+- name: 'gcr.io/cloud.builders/gcloud'
+  args:
+  - functions
+  - deploy
+  - hello  
+  - --runtime=python312  
+  - --trigger-http  
+  - --allow-unauthenticated  
+  - --entry-point=hello_http  
+  - --source=. 
+  - --region=us-central1 
+

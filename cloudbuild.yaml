@@ -4,11 +4,11 @@ steps:
   args:
   - functions
   - deploy
-  - hello  
+  - my_function  
   - --runtime=python312  
   - --trigger-http  
   - --allow-unauthenticated  
-  - --entry-point=hello_http  
+  - --entry-point=hello 
   - --source=. 
   - --region=us-central1 
 

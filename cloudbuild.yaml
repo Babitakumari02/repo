@@ -1,24 +1,15 @@
 steps:
-  - name: 'gcr.io/cloud.builders/gcloud'
-    entrypoint: 'bash'
+  - name: 'gcr.io/cloud-builders/gcloud'
     args:
-      - '-c'
-      - |
-        gcloud functions deploy cloudfunction1 \
-        --region=us-central1 \
-        --runtime=python312 \
-        --trigger-http \
-        --entry-point=hello_http \
-        --source=cloudfunction1/ \
-        --allow-unauthenticated
+      - functions
+      - deploy
+      - cloudfunction1  # Name of your Cloud Function
+      - --region=us-central1
+      - --runtime=python312
+      - --trigger-http
+      - --entry-point=hello_http
+      - --source=cloudfunction1/
+      - --allow-unauthenticated
 
 options:
   logging: CLOUD_LOGGING_ONLY  # Or set to NONE if you prefer no logs
-
-
-
-
-# Step : Deploy the Cloud Function
-
-
-

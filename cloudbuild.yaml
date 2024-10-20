@@ -9,7 +9,7 @@ steps:
         --runtime=python312 \
         --trigger-http \
         --entry-point=hello_http \
-        --source=apis/ \
+        --source=cloudfunction1/ \
         --allow-unauthenticated
 
 options:

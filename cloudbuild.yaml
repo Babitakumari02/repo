@@ -25,15 +25,6 @@ steps:
       - --source=cloudfunction1
       # --allow-unauthenticated is omitted to enforce authentication
 
-  # Optional: Step to set IAM policy to allow only specific authenticated users for cloudfunction2
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args:
-      - functions
-      - add-iam-policy-binding
-      - cloudfunction2
-      - --region=us-central1
-      - --member="babita.kumari@atgeirsolutions.com"  # Replace with authorized user email
-      - --role="roles/cloudfunctions.invoker"
 
 options:
   logging: CLOUD_LOGGING_ONLY  # Or set to NONE if you prefer no logs

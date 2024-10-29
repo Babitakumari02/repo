@@ -19,5 +19,5 @@ def hello_http(request):
     elif request_args and 'name' in request_args:
         name = request_args['name']
     else:
-        name = 'Hello `````to my world ! how are you~~~~~dfddggffhf '
+        name = 'My name is babita '
     return 'Hello {}!'.format(name)

@@ -1,27 +1,39 @@
 steps:
+ 
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - functions
       - deploy
-      - cloudfunction1  # Name of your Cloud Function
+      - cloudfunction1  
       - --region=us-central1
       - --runtime=python312
       - --trigger-http
       - --entry-point=hello_http
       - --source=cloudfunction1/
-      - --allow-unauthenticated
+      - --allow-unauthenticated  # This makes it publicly accessible
 
+  # Step to deploy cloudfunction2 as authorized (requires authentication)
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - functions
       - deploy
-      - cloudfunction2  # Name of your Cloud Function
+      - cloudfunction2  # Name of your Cloud Function (authorized/requires authentication)
       - --region=us-central1
       - --runtime=python312
       - --trigger-http
       - --entry-point=hello_http
-      - --source=cloudfunction1/
-      
+      - --source=cloudfunction1
+      # --allow-unauthenticated is omitted to enforce authentication
+
+  # Optional: Step to set IAM policy to allow only specific authenticated users for cloudfunction2
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - functions
+      - add-iam-policy-binding
+      - cloudfunction2
+      - --region=us-central1
+      - --member="babita.kumari@atgeirsolutions.com"  # Replace with authorized user email
+      - --role="roles/cloudfunctions.invoker"
 
 options:
   logging: CLOUD_LOGGING_ONLY  # Or set to NONE if you prefer no logs

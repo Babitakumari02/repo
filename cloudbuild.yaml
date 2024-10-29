@@ -11,5 +11,17 @@ steps:
       - --source=cloudfunction1/
       - --allow-unauthenticated
 
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - functions
+      - deploy
+      - cloudfunction2  # Name of your Cloud Function
+      - --region=us-central1
+      - --runtime=python312
+      - --trigger-http
+      - --entry-point=hello_http
+      - --source=cloudfunction1/
+      - --allow-authenticated
+
 options:
   logging: CLOUD_LOGGING_ONLY  # Or set to NONE if you prefer no logs

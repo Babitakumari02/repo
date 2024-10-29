@@ -21,7 +21,7 @@ steps:
       - --trigger-http
       - --entry-point=hello_http
       - --source=cloudfunction1/
-      - --allow-authenticated
+      
 
 options:
   logging: CLOUD_LOGGING_ONLY  # Or set to NONE if you prefer no logs
